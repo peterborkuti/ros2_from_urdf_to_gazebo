@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot name="simple_robot">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.4" radius="0.4"/>
+      </geometry>
+      <!-- set visual origin in the coordinate frame of link -->
+      <origin xyz="0 0 0.2"/>
+    </visual>
+  </link>
+  <link name="body_link">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.6"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="base_body_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="body_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.5"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+</robot>
