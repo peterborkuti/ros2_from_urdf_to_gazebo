@@ -25,6 +25,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'state_publisher=simple.state_publisher:main'
         ],
     },
 )
