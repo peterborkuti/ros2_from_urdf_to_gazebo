@@ -19,10 +19,12 @@ def generate_launch_description():
                                   output='both',
                                   parameters=[rsp_params])
 
-
+    jsp_gui = launch_ros.actions.Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui')
 
     rviz_conf_file = os.path.join(share_dir, 'simple.rviz')
-
     rviz = launch_ros.actions.Node(
         package='rviz2',
         executable='rviz2',
@@ -32,4 +34,4 @@ def generate_launch_description():
 
     
 
-    return launch.LaunchDescription([rsp, rviz])
+    return launch.LaunchDescription([rsp, jsp_gui, rviz])

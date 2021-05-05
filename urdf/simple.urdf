@@ -16,7 +16,7 @@
       </geometry>
     </visual>
   </link>
-  <joint name="base_body_joint" type="fixed">
+  <joint name="base_body_joint" type="continuous">
     <parent link="base_link"/>
     <child link="body_link"/>
     <origin rpy="0 0 0" xyz="0 0 0.5"/>
