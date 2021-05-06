@@ -23,6 +23,8 @@ class StatePublisher(Node):
 
         # message declarations
         joint_state = JointState()
+        angle = 0.0
+        delta = pi / 100.0
 
         try:
             while rclpy.ok():
@@ -32,7 +34,8 @@ class StatePublisher(Node):
                 now = self.get_clock().now()
                 joint_state.header.stamp = now.to_msg()
                 joint_state.name = ['base_body_joint']
-                joint_state.position =[random()*2*pi]
+                joint_state.position =[angle]
+                angle += delta
 
                 # send the joint state and transform
                 self.joint_pub.publish(joint_state)
