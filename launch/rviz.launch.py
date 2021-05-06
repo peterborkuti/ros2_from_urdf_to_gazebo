@@ -2,6 +2,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 
+from launch.substitutions import Command
 import launch
 import launch_ros.actions
 
@@ -9,11 +10,9 @@ import launch_ros.actions
 def generate_launch_description():
     share_dir = get_package_share_directory('simple') 
 
-    urdf_file = os.path.join(share_dir, 'simple.urdf')
-    with open(urdf_file, 'r') as infp:
-        robot_desc = infp.read()
+    xacro_file = os.path.join(share_dir, 'simple.xacro')
 
-    rsp_params = {'robot_description': robot_desc}
+    rsp_params = {'robot_description': Command(['xacro',' ', xacro_file])}
     rsp = launch_ros.actions.Node(package='robot_state_publisher',
                                   executable='robot_state_publisher',
                                   output='both',
