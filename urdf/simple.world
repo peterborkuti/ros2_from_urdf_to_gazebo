@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+  Gazebo ROS joint state trajectory
+
+  Try for example:
+
+  ros2 topic pub /simple/set_trajectory_simple trajectory_msgs/msg/JointTrajectory '{header: {frame_id: world}, joint_names: {base_body_joint}, points: [{positions: {0.5}}]}'
+-->
+<sdf version="1.7">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>model://simple</uri>
+
+      <plugin name="gazebo_ros_joint_pose_trajectory"
+          filename="libgazebo_ros_joint_pose_trajectory.so">
+        <ros>
+          <namespace>/simple</namespace>
+          <remapping>set_joint_trajectory:=set_trajectory_simple</remapping>
+        </ros>
+        <update_rate>2</update_rate>
+      </plugin>
+
+
+    </include>
+  </world>
+</sdf>
