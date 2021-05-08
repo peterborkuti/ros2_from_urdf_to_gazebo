@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="simple_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="simple" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="./materials.xacro" />
 
   <xacro:macro name="default_inertial" params="mass">
